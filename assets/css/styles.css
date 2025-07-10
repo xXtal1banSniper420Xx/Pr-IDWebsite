@@ -1,0 +1,117 @@
+/* Reset default margins/padding */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  line-height: 1.6;
+  color: #fff;
+  background-color: #00796B;
+  padding: 0;
+  margin: 0;
+}
+
+header, footer {
+  background-color: #004b87;
+  color: #fff;
+  padding: 1rem;
+}
+
+header .logo img {
+  max-height: 50px;
+}
+
+.main-nav {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.main-nav a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+main {
+  padding: 2rem;
+}
+
+/* Section styles */
+.section {
+  margin-bottom: 3rem;
+}
+
+/* Stats */
+.stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.stat {
+  background: #e6f0ff;
+  padding: 1rem;
+  border-radius: 8px;
+  flex: 1 1 200px;
+  text-align: center;
+}
+
+/* Cards */
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.card {
+  background: #fffbe6;
+  border-left: 4px solid #f7c948;
+  padding: 1rem;
+  border-radius: 6px;
+  flex: 1 1 200px;
+}
+
+/* Buttons */
+.btn {
+  display: inline-block;
+  background-color: #0070f3;
+  color: white;
+  padding: 0.5rem 1rem;
+  margin-top: 1rem;
+  text-decoration: none;
+  border-radius: 5px;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  font-size: 0.9rem;
+  margin-top: 3rem;
+}
+
+/* Social links */
+.social-links {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.social-links a {
+  color: #0070f3;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+/* Optional: smooth scroll */
+html {
+  scroll-behavior: smooth;
+}
