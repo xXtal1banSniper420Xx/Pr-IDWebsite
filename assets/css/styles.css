@@ -115,3 +115,37 @@ footer {
 html {
   scroll-behavior: smooth;
 }
+
+.custom-navbar {
+  background-color: #00796B !important;
+  /* if you prefer CSS over the py-3 utility:
+     padding: 1rem 0 !important; */
+}
+
+.custom-navbar .navbar-brand {
+  margin-left: 0 !important;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #fff !important;
+  letter-spacing: 1px;
+}
+
+.custom-navbar .navbar-nav .nav-link {
+  color: #fff !important;
+  margin: 0 1rem;
+  font-weight: 500;
+}
+
+.custom-navbar .navbar-nav .nav-link:hover {
+  color: #eee !important;
+}
+
+/* ─── Hero image “frame” ─────────────────────────────────────────────── */
+.hero-frame {
+  display: block;
+  margin: 0 auto;               /* center it in the column */
+  border: 6px solid #17665d;
+  border-radius: 8px;           /* softly rounded corners */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); /* gentle drop-shadow */
+  max-width: 100%;              /* responsive */
+}
