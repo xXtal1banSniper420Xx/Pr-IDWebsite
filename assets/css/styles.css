@@ -149,3 +149,12 @@ html {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); /* gentle drop-shadow */
   max-width: 100%;              /* responsive */
 }
+
+/* About section: deep teal background + white text */
+#about {
+  background-color: #17665d !important;
+  color: #fff;
+}
+#about .text-center {
+  color: #fff;
+}
