@@ -15,7 +15,7 @@ app.post('/api/llm', async (req, res) => {
 
   try {
     // Step 1: Initiate prediction
-    const startResponse = await fetch('https://api.replicate.com/v1/models/meta/meta-llama-3.1-405b-instruct/predictions', {
+    const startResponse = await fetch('https://api.replicate.com/v1/models/openai/gpt-4o/predictions', {
       method: 'POST',
       headers: {
         'Authorization': `Token ${process.env.REPLICATE_API_TOKEN}`,
