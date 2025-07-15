@@ -1,10 +1,14 @@
-<section id="engage" class="py-5 text-center">
-  <div class="container">
-    <h2 class="mb-4">Get Involved</h2>
-    <p>
-      Coming soon: gamified feedback tools, interactive maps, and community quests. 
-      You’ll be able to earn cards, unlock stories, and make your voice count.
+<section id="engage" class="py-5 fade-in-section">
+  <div class="container text-white text-center">
+    <h2 class="mb-4"><i class="bi bi-controller me-2"></i>Get Involved</h2>
+    <p class="engage-description mb-4">
+      Discover how you can participate in shaping the environment through fun and interactive quizzes!
     </p>
-    <a href="#socials" class="btn btn-outline-primary mt-3">Stay Updated</a>
+    <div id="quiz-box" class="p-4 bg-dark rounded shadow-sm" style="max-width: 700px; margin: auto;">
+      <h4 id="quiz-question" class="mb-4"></h4>
+      <div id="quiz-options" class="d-flex flex-column gap-2"></div>
+      <div id="quiz-feedback" class="mt-3 fw-bold"></div>
+      <button id="next-btn" class="btn btn-light mt-4" style="display: none;">Next</button>
+    </div>
   </div>
 </section>

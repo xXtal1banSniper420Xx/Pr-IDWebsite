@@ -6,16 +6,17 @@
 }
 
 body {
-  font-family: 'Segoe UI', sans-serif;
+  font-family: 'Poppins', sans-serif;
   line-height: 1.6;
   color: #fff;
-  background-color: #00796B;
+  background-color: #393E46;
   padding: 0;
   margin: 0;
 }
 
-header, footer {
-  background-color: #004b87;
+.site-header,
+.site-footer {
+  background-color: #222831;
   color: #fff;
   padding: 1rem;
 }
@@ -39,7 +40,7 @@ header .logo img {
 }
 
 main {
-  padding: 2rem;
+  padding: 0;
 }
 
 /* Section styles */
@@ -82,12 +83,13 @@ main {
 /* Buttons */
 .btn {
   display: inline-block;
-  background-color: #0070f3;
-  color: white;
+  background-color: #DFD0B8;
+  color: #948979;
   padding: 0.5rem 1rem;
   margin-top: 1rem;
   text-decoration: none;
   border-radius: 5px;
+  border-color: #948979;
 }
 
 /* Footer */
@@ -117,7 +119,7 @@ html {
 }
 
 .custom-navbar {
-  background-color: #00796B !important;
+  background-color: #222831 !important;
   /* if you prefer CSS over the py-3 utility:
      padding: 1rem 0 !important; */
 }
@@ -140,21 +142,360 @@ html {
   color: #eee !important;
 }
 
-/* ─── Hero image “frame” ─────────────────────────────────────────────── */
-.hero-frame {
-  display: block;
-  margin: 0 auto;               /* center it in the column */
-  border: 6px solid #17665d;
-  border-radius: 8px;           /* softly rounded corners */
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); /* gentle drop-shadow */
-  max-width: 100%;              /* responsive */
-}
-
 /* About section: deep teal background + white text */
 #about {
-  background-color: #17665d !important;
+  background: linear-gradient(145deg, #948979, #948978);
+  position: relative;
+  overflow: hidden;
   color: #fff;
 }
+
 #about .text-center {
   color: #fff;
+}
+
+#about .container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+#about h2 {
+  font-size: 2.5rem;
+  font-weight: 700;
+}
+
+#about p {
+  font-size: 1.125rem;
+  line-height: 1.8;
+  font-weight: 400;
+  margin-top: 1rem;
+}
+
+/* Animation on scroll */
+.fade-in-section {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.6s ease-out;
+}
+
+.fade-in-section.visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* Background section */
+
+
+/* CARD STYLE */
+.background-card {
+  background: linear-gradient(135deg, rgba(255,255,255,0.03), rgba(255,255,255,0));
+  padding: 2.5rem;
+  border-radius: 1.25rem;
+  max-width: 850px;
+  margin: 0 auto;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
+}
+
+/* TITLE */
+#background h2 {
+  font-size: 2.2rem;
+  font-weight: 700;
+}
+
+/* QUOTE STYLE */
+.quote-box {
+  border-left: 4px solid #DFD08B;
+  padding-left: 1.25rem;
+  margin-top: 1rem;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 0.5rem;
+}
+
+.quote-box p {
+  font-size: 1.05rem;
+  color: #ffffff;
+}
+
+.quote-box .blockquote-footer {
+  font-size: 0.95rem;
+  color: #ffffff;
+  margin-top: 0.5rem;
+}
+
+/* PARAGRAPH STYLE */
+#background p {
+  font-size: 1.1rem;
+  line-height: 1.8;
+}
+
+/* Engage Section */
+#insights {
+  background: linear-gradient(145deg, #009688, #009689);
+  position: relative;
+  overflow: hidden;
+  color: #fff;
+}
+#engage {
+  background: linear-gradient(145deg, #948978, #948979);
+  position: relative;
+  overflow: hidden;
+  color: #fff;
+}
+
+.engage-card {
+  background: rgba(255, 255, 255, 0.04);
+  padding: 3rem;
+  border-radius: 1.25rem;
+  max-width: 800px;
+  margin: 0 auto;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(6px);
+}
+
+#engage h2 {
+  font-size: 2.3rem;
+  font-weight: 700;
+}
+
+#engage p.lead {
+  font-size: 1.15rem;
+  line-height: 1.7;
+}
+
+#engage .btn-outline-light {
+  border-width: 2px;
+  font-weight: 600;
+}
+
+/* Insights Section */
+#insights {
+  background: linear-gradient(145deg, #948979, #948978);
+  position: relative;
+  overflow: hidden;
+  color: #fff;
+}
+
+.insight-card {
+  background: #DFD0B8;
+  border: 1px solid rgba(255, 255, 255, 0.02);
+  color: #948979;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  height: 100%;
+  font-style: italic;
+}
+
+.insight-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.25);
+}
+
+.insight-card i {
+  color: #948979;
+}
+
+.hover-zoom:hover {
+  transform: scale(1.05) translateY(-4px) rotate(1deg);
+}
+
+/* Challenges Section */
+
+#challenges {
+  position: relative;
+  overflow: hidden;
+  color: #fff;
+}
+
+.challenge-card {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 2rem;
+  border-radius: 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.challenge-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+}
+
+#challenges h2 {
+  font-size: 2.2rem;
+  font-weight: 700;
+}
+
+.challenge-card h5 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  font-style: italic;
+}
+
+.challenge-card p {
+  font-size: 1rem;
+  line-height: 1.6;
+  font-style: italic;
+}
+
+.challenge-card .text-info {
+  color: #ffffff !important;
+  font-style: italic;
+}
+
+/* Socials Section */
+
+#socials {
+  background: linear-gradient(145deg, #393E46, #393E45);
+  position: relative;
+  overflow: hidden;
+  color: #fff;
+}
+
+#socials h2 {
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.social-links {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  padding: 0;
+  margin-top: 1rem;
+}
+
+.social-links li {
+  list-style: none;
+}
+
+.social-link {
+  color: #fff !important;
+  background: #948979;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 0.75rem 1.25rem;
+  border-radius: 2rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+}
+
+.social-link:hover {
+  background: #ffffff;
+  color: #03a592;
+}
+
+.quiz-btn {
+  color: #ffffff!important;
+  padding: 0.75rem 1.5rem;
+  font-weight: 600;
+  border-radius: 2rem;
+  min-width: 120px;
+}
+
+.quiz-option {
+  width: 100%;
+  text-align: left;
+  padding: 0.75rem 1rem;
+  border-radius: 0.75rem;
+  font-weight: 500;
+  background: #948979;
+  border: 2px solid #948979;
+  color: #fff;
+  transition: all 0.25s ease;
+}
+
+#quiz-box {
+  background: #393E46 !important;
+  border-radius: 1rem;
+  padding: 2rem;
+  box-shadow: 0 0 20px #393E46;
+}
+
+.brand-future {
+  color: #DFD0B8; /* Or any color you prefer */
+}
+
+.chatbot-button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #948979;
+  color: white;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  z-index: 999;
+}
+
+.chatbot-popup {
+  position: fixed;
+  bottom: 80px;
+  right: 20px;
+  width: 300px;
+  background: #fff;
+  color: #333;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+  display: none;
+  flex-direction: column;
+  z-index: 999;
+  overflow: hidden;
+}
+
+.chatbot-header {
+  background-color: #948979;
+  color: white;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.chatbot-body {
+  padding: 10px;
+  max-height: 200px;
+  overflow-y: auto;
+  font-size: 0.9rem;
+}
+
+#chatbot-close {
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.chatbot-input {
+  display: flex;
+  align-items: center;
+  padding: 8px;
+  background: #f1f1f1;
+  border-top: 1px solid #ccc;
+}
+
+.chatbot-input input {
+  flex: 1;
+  padding: 8px;
+  border-radius: 20px 0 0 20px;
+  border: 1px solid #ccc;
+  outline: none;
+  border-right: none;
+}
+
+.chatbot-input button {
+  padding: 8px 16px;
+  background-color: #948979;
+  color: white;
+  border: 1px solid #DFD0B8;
+  border-left: none;
+  border-radius: 0 20px 20px 0;
+  cursor: pointer;
 }

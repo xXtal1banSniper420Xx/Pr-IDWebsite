@@ -1,14 +1,18 @@
-<section id="home" class="d-flex align-items-center" style="min-height: 100vh; background-color: #00796B;">
+<section id="home" class="d-flex align-items-center" style="min-height: 100vh; background-color: #393E46;">
   <div class="container">
     <div class="row align-items-center">
       <div class="col-lg-6 text-white">
-        <h1 class="fw-bold mb-4">Welcome to CareQuest</h1>
+        <h1 class="fw-bold mb-4">Welcome to <span class="brand-future">Future</span>Ground! Nigga</h1>
         <p class="lead mb-4">
           Engaging Singaporean youths (15–35) to shape a happier, healthier city — one quest at a time.
         </p>
         <div>
           <a href="#engage" class="btn btn-light btn-lg me-3">Get Started</a>
-          <a href="#insights" class="btn btn-outline-light btn-lg">
+          <a href="#" 
+            class="btn btn-outline-light btn-lg" 
+            data-bs-toggle="modal" 
+            data-bs-target="#videoModal" 
+            onclick="playVideo()">
             <i class="bi bi-play-circle me-1"></i> Learn More
           </a>
         </div>
@@ -17,9 +21,25 @@
         <!-- add the hero-frame class -->
         <img
           src="assets/images/illustration.png"
-          class="img-fluid hero-frame"
+          class="img-fluid hero-frame hover-zoom"
           alt="Hero Illustration"
         >
+      </div>
+    </div>
+  </div>
+  <!-- Video Modal -->
+  <div class="modal fade" id="videoModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content bg-dark">
+        <div class="modal-body p-0">
+          <div class="ratio ratio-16x9">
+            <iframe id="youtubePlayer" 
+                    src="" 
+                    allowfullscreen 
+                    allow="autoplay">
+            </iframe>
+          </div>
+        </div>
       </div>
     </div>
   </div>
