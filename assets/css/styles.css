@@ -499,3 +499,47 @@ html {
   border-radius: 0 20px 20px 0;
   cursor: pointer;
 }
+
+.chatbot-input textarea {
+  flex: 1;
+  padding: 8px;
+  border-radius: 20px 0 0 20px;
+  border: 1px solid #ccc;
+  resize: none;
+  font-family: inherit;
+}
+
+.placeholder-3d {
+  width: 100%;
+  max-width: 400px;
+  height: 300px;
+  margin: 2rem auto;
+  background: linear-gradient(135deg, #ddd, #bbb);
+  border: 2px dashed #888;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Segoe UI', sans-serif;
+  color: #444;
+  font-size: 1rem;
+  text-align: center;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+
+.three-container {
+  width: 100%;
+  max-width: 600px;
+  height: 400px;
+  margin: 2rem auto;
+  border: 2px solid #888;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #eee;
+}
+
+#three-canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+}

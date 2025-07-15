@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width,initial-scale=1.0" />
   <title>Shaping a Happy & Healthy City</title>
 
+  <link rel="shortcut icon" href="assets/images/favicon.png" type="image/png" />
+
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 
   <!-- Bootstrap 5 CSS -->
@@ -12,6 +14,13 @@
 
   <!-- Bootstrap Icons -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet" />
+
+  <!-- Three.js Core -->
+  <script src="https://cdn.jsdelivr.net/npm/three@0.158.0/build/three.min.js"></script>
+
+  <!-- GLTFLoader (required for robot.glb) -->
+  <script src="https://cdn.jsdelivr.net/npm/three@0.158.0/examples/js/loaders/GLTFLoader.js"></script>
+
 
   <!-- Your custom CSS (must be last) -->
   <link rel="stylesheet" href="assets/css/styles.css" />
@@ -38,7 +47,6 @@
 
   <!-- Bootstrap JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/js/quiz.js"></script>
 
   <!-- Chatbot Pop-up Button -->
   <div id="chatbot-toggle" class="chatbot-button">💬</div>
@@ -53,9 +61,10 @@
     <p>Hello! Ask me anything! 😊</p>
   </div>
   <div class="chatbot-input">
-    <input type="text" id="chat-input" placeholder="Type a message..." />
+    <textarea id="chat-input" placeholder="Type a message..." rows="1"></textarea>
     <button id="chat-send">Send</button>
   </div>
   </div>
+  <script src="assets/js/quiz.js"></script>
 </body>
 </html>

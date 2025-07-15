@@ -1,7 +1,5 @@
 function loadHTML(id, filePath) {
-  // Add a cache-busting query param
   const url = `${filePath}?v=${Date.now()}`;
-
   fetch(url)
     .then(response => {
       if (!response.ok) throw new Error('Network response was not ok');
@@ -28,7 +26,7 @@ loadHTML("challenges-placeholder", "components/sections/challenges.html");
 loadHTML("engage-placeholder", "components/sections/engage.html");
 loadHTML("socials-placeholder", "components/sections/socials.html");
 
-// Wait for all HTML to load, then activate fade-in logic
+// Wait for all sections to load
 Promise.all([
   "header-placeholder",
   "footer-placeholder",
@@ -47,9 +45,8 @@ Promise.all([
   });
   observer.observe(el, { childList: true });
 }))).then(() => {
-  // Fade-in effect on scroll
+  // Fade-in on scroll
   const faders = document.querySelectorAll(".fade-in-section");
-
   const appearOnScroll = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
@@ -58,18 +55,15 @@ Promise.all([
         entry.target.classList.remove("visible");
       }
     });
-  }, {
-    threshold: 0.1 // adjust this if needed
-  });
-
+  }, { threshold: 0.1 });
   faders.forEach(fader => appearOnScroll.observe(fader));
 
-  // ✅ Now load quiz.js after engage.html is mounted
+  // Load quiz.js
   const quizScript = document.createElement("script");
-  quizScript.src = "assets/js/quiz.js"; // ✅ ensure this path is correct
+  quizScript.src = "assets/js/quiz.js";
   quizScript.onload = () => {
     if (typeof setupQuiz === "function") {
-      setupQuiz(); // ✅ run after it's available
+      setupQuiz();
       console.log("✅ quiz.js loaded and quiz initialized");
     } else {
       console.error("❌ setupQuiz is not defined in quiz.js");
@@ -77,35 +71,17 @@ Promise.all([
   };
   document.body.appendChild(quizScript);
 
-});
-
-function playVideo() {
-  const player = document.getElementById("youtubePlayer");
-  player.src = "https://www.youtube.com/embed/WZyQV3FC5zc?autoplay=1";
-
-  // Reset video when modal closes
-  const modal = document.getElementById("videoModal");
-  modal.addEventListener("hidden.bs.modal", () => {
-    player.src = "";
-  }, { once: true });
-}
-
-document.addEventListener("click", function (e) {
-  if (e.target.classList.contains("quiz-btn")) {
-    const result = document.getElementById("quiz-result");
-    const answer = e.target.dataset.answer;
-
-    if (answer === "C") {
-      result.textContent = "✅ Correct! 48.6% feel their feedback isn't taken seriously.";
-      result.style.color = "#00ffbf";
-    } else {
-      result.textContent = "❌ Not quite. Try again!";
-      result.style.color = "#ff6b6b";
+  // ✅ Wait for canvas to be injected before loading 3D model
+  const canvasPoller = setInterval(() => {
+    const canvas = document.getElementById("three-canvas");
+    if (canvas) {
+      clearInterval(canvasPoller);
+      load3DModel();
     }
-  }
+  }, 50);
 });
 
-// Chatbot toggle logic
+// Chatbot logic
 document.addEventListener("DOMContentLoaded", () => {
   const toggle = document.getElementById("chatbot-toggle");
   const windowBox = document.getElementById("chatbot-window");
@@ -114,15 +90,15 @@ document.addEventListener("DOMContentLoaded", () => {
   const input = document.getElementById("chat-input");
   const log = document.getElementById("chat-log");
 
-  toggle.addEventListener("click", () => {
+  toggle?.addEventListener("click", () => {
     windowBox.style.display = "flex";
   });
 
-  close.addEventListener("click", () => {
+  close?.addEventListener("click", () => {
     windowBox.style.display = "none";
   });
 
-  send.addEventListener("click", async () => {
+  async function sendMessage() {
     const userMsg = input.value.trim();
     if (!userMsg) return;
 
@@ -141,8 +117,61 @@ document.addEventListener("DOMContentLoaded", () => {
       log.innerHTML += `<div><strong>FgBot:</strong> ${reply}</div>`;
       log.scrollTop = log.scrollHeight;
     } catch (err) {
-      log.innerHTML += `<div><strong>CareBot:</strong> ⚠️ Server error.</div>`;
+      log.innerHTML += `<div><strong>FgBot:</strong> ⚠️ Server error.</div>`;
+    }
+  }
+
+  send?.addEventListener("click", sendMessage);
+  input?.addEventListener("keydown", (e) => {
+    if (e.key === "Enter" && !e.shiftKey) {
+      e.preventDefault();
+      sendMessage();
     }
   });
 });
 
+// 3D Model loader
+function load3DModel() {
+  const canvas = document.getElementById("three-canvas");
+  if (!canvas) {
+    console.warn("🛑 Canvas not found. Skipping 3D init.");
+    return;
+  }
+
+  const renderer = new THREE.WebGLRenderer({ canvas, antialias: true });
+  renderer.setSize(canvas.clientWidth, canvas.clientHeight);
+
+  const scene = new THREE.Scene();
+  scene.background = new THREE.Color(0xf0f0f0);
+
+  const camera = new THREE.PerspectiveCamera(45, canvas.clientWidth / canvas.clientHeight, 0.1, 1000);
+  camera.position.set(0, 1.5, 5);
+
+  const light = new THREE.HemisphereLight(0xffffff, 0x444444, 1.5);
+  light.position.set(0, 1, 0);
+  scene.add(light);
+
+  const loader = new THREE.GLTFLoader();
+  loader.load(
+    'assets/models/robot.glb',
+    (gltf) => {
+      console.log("✅ Model loaded:", gltf);
+      const model = gltf.scene;
+      model.scale.set(2, 2, 2);
+      model.position.y = -1;
+      scene.add(model);
+
+      function animate() {
+        requestAnimationFrame(animate);
+        model.rotation.y += 0.01;
+        renderer.render(scene, camera);
+      }
+
+      animate();
+    },
+    undefined,
+    (error) => {
+      console.error("❌ Failed to load model:", error);
+    }
+  );
+}
