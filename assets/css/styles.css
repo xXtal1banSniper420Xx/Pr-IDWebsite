@@ -244,7 +244,7 @@ html {
 }
 
 .engage-card {
-  background: #5E936C I !important;
+  background: #3E5F44 I !important;
   padding: 3rem;
   border-radius: 1.25rem;
   max-width: 800px;
@@ -348,7 +348,7 @@ html {
 /* Socials Section */
 
 #socials {
-  background: linear-gradient(145deg, #3E5F45, #3E5F44);
+  background: linear-gradient(145deg, #5E936C, #5E936D);
   position: relative;
   overflow: hidden;
   color: #fff;
@@ -413,7 +413,7 @@ html {
 
 #quiz-box {
   background-color: #93DA97 !important; /* or whichever green you want */
-  color: #3E5F44;
+  color: #fff;
   border-radius: 1rem;
   padding: 2rem;
   box-shadow: 0 0 20px #5E936C;
