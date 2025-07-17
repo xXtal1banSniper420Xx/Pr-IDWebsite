@@ -38,7 +38,7 @@ function setupQuiz() {
   function loadQuestion() {
     const q = quizData[currentQuestion];
     box.innerHTML = `
-      <div class="bg-dark text-white p-4 rounded shadow">
+      <div class="text-white p-4 rounded shadow" style="background-color: #5E936C;">
         <h5 class="mb-3">Q${currentQuestion + 1}. ${q.question}</h5>
         ${q.options.map(opt => `
           <button class="btn btn-outline-light btn-sm d-block mb-2 quiz-option" data-answer="${opt}">
@@ -66,7 +66,7 @@ function setupQuiz() {
       score++;
     } else {
       feedback.textContent = `❌ Incorrect. Correct answer: ${correct}`;
-      feedback.style.color = "#ff6b6b";
+      feedback.style.color = "#f23737ff";
     }
 
     // Disable buttons
@@ -85,7 +85,7 @@ function setupQuiz() {
 
   function showResult() {
     box.innerHTML = `
-      <div class="bg-dark text-white p-4 rounded shadow text-center">
+      <div class="text-white p-4 rounded shadow text-center" style="background-color: #5E936C;">
         <h4>🎉 Quiz Complete!</h4>
         <p>You got <strong>${score}</strong> out of <strong>${quizData.length}</strong> correct.</p>
         <button class="btn btn-outline-light mt-3" id="retry-btn">Retry Quiz</button>
