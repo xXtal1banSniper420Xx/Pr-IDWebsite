@@ -66,5 +66,34 @@
   </div>
   </div>
   <script src="assets/js/quiz.js"></script>
+  <script type="module">
+    import { sendPrompt } from './assets/js/llm.js';
+
+    const chatLog = document.getElementById("chat-log");
+    const chatInput = document.getElementById("chat-input");
+    const sendButton = document.getElementById("chat-send");
+
+    sendButton.addEventListener("click", async () => {
+      const userMessage = chatInput.value.trim();
+      if (!userMessage) return;
+
+      chatLog.innerHTML += `<p><strong>You:</strong> ${userMessage}</p>`;
+      chatInput.value = "";
+
+      chatLog.innerHTML += `<p><em>FgBot is typing...</em></p>`;
+      const reply = await sendPrompt(userMessage);
+
+      chatLog.innerHTML = chatLog.innerHTML.replace(`<p><em>FgBot is typing...</em></p>`, '');
+      chatLog.innerHTML += `<p><strong>FgBot:</strong> ${reply}</p>`;
+      chatLog.scrollTop = chatLog.scrollHeight;
+    });
+
+    document.getElementById("chatbot-close").onclick = () => {
+      document.getElementById("chatbot-window").style.display = "none";
+    };
+    document.getElementById("chatbot-toggle").onclick = () => {
+      document.getElementById("chatbot-window").style.display = "block";
+    };
+  </script>
 </body>
 </html>

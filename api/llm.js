@@ -1,20 +1,14 @@
-import express from 'express';
 import fetch from 'node-fetch';
-import dotenv from 'dotenv';
-import cors from 'cors';
 
-dotenv.config();
-const app = express();
+export default async function handler(req, res) {
+  if (req.method !== 'POST') {
+    return res.status(405).json({ error: 'Method Not Allowed' });
+  }
 
-app.use(cors());
-app.use(express.json());
-
-app.post('/api/llm', async (req, res) => {
   const prompt = req.body.prompt;
   console.log("▶️ Prompt received:", prompt);
 
   try {
-    // Step 1: Initiate prediction
     const startResponse = await fetch('https://api.replicate.com/v1/models/openai/gpt-4o/predictions', {
       method: 'POST',
       headers: {
@@ -30,7 +24,6 @@ app.post('/api/llm', async (req, res) => {
     const prediction = await startResponse.json();
     const getUrl = prediction?.urls?.get;
 
-    // Step 2: Poll for result
     let output = null;
     for (let i = 0; i < 20; i++) {
       const pollResponse = await fetch(getUrl, {
@@ -45,19 +38,17 @@ app.post('/api/llm', async (req, res) => {
         throw new Error("Prediction failed.");
       }
 
-      await new Promise(resolve => setTimeout(resolve, 1500)); // wait 1.5s
+      await new Promise(resolve => setTimeout(resolve, 1500));
     }
 
-    let reply = Array.isArray(output) ? output.join('').replace(/\s+,/g, ',').replace(/,\s+/g, ', ') : output;
-    res.json({ output: reply ?? "❌ Timed out or no response." });
+    let reply = Array.isArray(output)
+      ? output.join('').replace(/\s+,/g, ',').replace(/,\s+/g, ', ')
+      : output;
 
+    res.status(200).json({ output: reply ?? "❌ Timed out or no response." });
 
   } catch (err) {
     console.error("❌ Error in /api/llm:", err);
     res.status(500).json({ error: "Backend error." });
   }
-});
-
-app.listen(3000, () => {
-  console.log('✅ Server running on http://localhost:3000');
-});
+}
