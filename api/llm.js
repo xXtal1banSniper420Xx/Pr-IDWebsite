@@ -9,6 +9,7 @@ export default async function handler(req, res) {
   console.log("▶️ Prompt received:", prompt);
 
   try {
+    // Step 1: Start prediction
     const startResponse = await fetch('https://api.replicate.com/v1/models/openai/gpt-4o/predictions', {
       method: 'POST',
       headers: {
@@ -24,11 +25,18 @@ export default async function handler(req, res) {
     const prediction = await startResponse.json();
     const getUrl = prediction?.urls?.get;
 
+    // ✅ Validate getUrl before using
+    if (!getUrl || !getUrl.startsWith('http')) {
+      throw new Error("❌ Invalid prediction polling URL from Replicate");
+    }
+
+    // Step 2: Poll for result
     let output = null;
     for (let i = 0; i < 20; i++) {
       const pollResponse = await fetch(getUrl, {
         headers: { 'Authorization': `Token ${process.env.REPLICATE_API_TOKEN}` }
       });
+
       const pollResult = await pollResponse.json();
 
       if (pollResult.status === 'succeeded') {
